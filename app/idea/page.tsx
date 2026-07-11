@@ -1,11 +1,13 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { coverage } from "../data";
 import { displayTicker, formatQuote, formatQuoteDate, formatUpside, upsideClass, upsideFromQuote, useQuotes } from "../quote-utils";
 
-export default function IdeaPage() {
+function IdeaPageContent() {
   const params = useSearchParams();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const ticker = params.get("ticker") ?? "";
   const item = coverage.find((entry) => entry.ticker === ticker);
   const { quotes, loading: quotesLoading } = useQuotes();
@@ -13,7 +15,7 @@ export default function IdeaPage() {
   if (!item) {
     return (
       <main className="detail-page">
-        <a className="detail-back" href="/#ideas">← Вернуться к покрытию</a>
+        <a className="detail-back" href={`${basePath}/#ideas`}>← Вернуться к покрытию</a>
         <h1 className="detail-error">Рекомендация не найдена</h1>
       </main>
     );
@@ -22,7 +24,7 @@ export default function IdeaPage() {
   return (
     <main className="detail-page">
       <header className="detail-topbar">
-        <a className="brand" href="/" aria-label="На главную">
+        <a className="brand" href={`${basePath}/`} aria-label="На главную">
           <span className="brand-mark">DL</span>
           <span className="brand-copy">
             <b>Дмитрий Лозовой</b>
@@ -31,7 +33,7 @@ export default function IdeaPage() {
         </a>
         <div className="header-actions">
           <p className="header-email">Почта для связи: <span>lozovoi.dmitriy@mail.ru</span></p>
-          <a className="detail-back" href="/#ideas">← Все рекомендации</a>
+          <a className="detail-back" href={`${basePath}/#ideas`}>← Все рекомендации</a>
         </div>
       </header>
 
@@ -103,5 +105,13 @@ export default function IdeaPage() {
         {item.ticker !== "ETH-USD" && <p className="source-note">Материалы открываются на Finam.ru — официальном первоисточнике публикаций. Часть полного текста может быть доступна после авторизации на сайте.</p>}
       </section>
     </main>
+  );
+}
+
+export default function IdeaPage() {
+  return (
+    <Suspense fallback={<main className="detail-page">Загрузка рекомендации…</main>}>
+      <IdeaPageContent />
+    </Suspense>
   );
 }
