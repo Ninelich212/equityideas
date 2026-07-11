@@ -24,6 +24,7 @@ const coverageMarketOrder: Record<Market, number> = {
 };
 
 export default function Home() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const [market, setMarket] = useState<(typeof markets)[number]>("Все");
   const [coverageMode, setCoverageMode] = useState<"current" | "all">("current");
   const { quotes, loading: quotesLoading } = useQuotes();
@@ -181,7 +182,7 @@ export default function Home() {
           </div>
           {visibleCoverage.map((idea, index) => (
               <article className="idea-row" key={idea.ticker}>
-                <a className="idea-main" href={`/idea?ticker=${encodeURIComponent(idea.ticker)}`}>
+                <a className="idea-main" href={`${basePath}/idea/?ticker=${encodeURIComponent(idea.ticker)}`}>
                   <span className="idea-name">
                     <i>{String(index + 1).padStart(2, "0")}</i>
                     <span>
