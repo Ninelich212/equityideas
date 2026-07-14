@@ -747,12 +747,17 @@ h1 span {
 }
 
 .detail-returns span {
-  color: #ff6675;
   font-family: var(--font-geist-mono), monospace;
-  font-size: 15px;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.detail-returns > span:first-child {
+  color: var(--white);
 }
 
 .detail-returns small {
+  font-weight: 500;
   margin-bottom: 6px;
 }
 
