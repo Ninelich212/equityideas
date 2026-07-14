@@ -311,11 +311,29 @@ h1 span {
 }
 
 .live-dot {
-  background: var(--white);
+  animation: live-pulse 1.6s ease-in-out infinite;
+  background: #35e878;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 0 4px rgba(53, 232, 120, 0.2);
   height: 7px;
   width: 7px;
+}
+
+@keyframes live-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(53, 232, 120, 0.18), 0 0 5px rgba(53, 232, 120, 0.35);
+    opacity: 0.75;
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(53, 232, 120, 0.08), 0 0 12px rgba(53, 232, 120, 0.85);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot {
+    animation: none;
+  }
 }
 
 .ticker-band {
