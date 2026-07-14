@@ -20,7 +20,12 @@ const yahooSymbols = {
   "002517.SZ": "002517.SZ",
   "600570.SS": "600570.SS",
   "3033.HK": "3033.HK",
-  "9999.HK": "9999.HK"
+  "9999.HK": "9999.HK",
+  "6758.T": "6758.T",
+  "7203.T": "7203.T",
+  "7211.T": "7211.T",
+  "7974.T": "7974.T",
+  DIS: "DIS"
 };
 
 const moexSymbols = {
@@ -30,7 +35,9 @@ const moexSymbols = {
   "RTKM_p.MM": "RTKMP",
   "YDEX.MM": "YDEX",
   "RTKM.MM": "RTKM",
-  "MTSS.MM": "MTSS"
+  "MTSS.MM": "MTSS",
+  FIAI: "DATA",
+  DELI: "DELI"
 };
 
 async function getJson(url) {
@@ -100,7 +107,6 @@ for (const [siteTicker, sourceTicker] of Object.entries(moexSymbols)) {
   }
 }
 
-// Японские бумаги намеренно остаются ручными.
 const sortedQuotes = Object.fromEntries(Object.entries(quotes).sort(([a], [b]) => a.localeCompare(b)));
 await writeFile(quotesPath, `${JSON.stringify(sortedQuotes, null, 2)}\n`);
 
