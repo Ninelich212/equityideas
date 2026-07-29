@@ -1,4 +1,4 @@
-export type Market = "Россия" | "США" | "Япония" | "Китай" | "Гонконг" | "Криптовалюты";
+export type Market = "Россия" | "США" | "Канада" | "Япония" | "Китай" | "Гонконг" | "Криптовалюты";
 
 export type Idea = {
   ticker: string;
@@ -133,6 +133,14 @@ export const ideas: Idea[] = [
 
 export const research = [
   {
+    date: "23.07.2026",
+    label: "Компания",
+    title: "CGI — отставание от индекса как инвестидея",
+    summary:
+      "Почему устойчивые финансовые показатели, высокая маржинальность и портфель долгосрочных заказов делают отставание CGI от канадского рынка интересной точкой входа.",
+    url: "https://www.finam.ru/publications/item/cgi--otstavanie-ot-indeksa-kak-investideya-20260723-1630/",
+  },
+  {
     date: "09.07.2026",
     label: "Компания",
     title: "МТС — дивидендный гэп как точка входа",
@@ -194,6 +202,26 @@ const finam = "https://www.finam.ru/publications/item";
 // Архив авторского покрытия. Полные тексты остаются на Finam.ru: это сохраняет
 // корректную атрибуцию и всегда ведет читателя к первоисточнику.
 const legacyCoverage: CoverageItem[] = [
+  {
+    ticker: "GIB.A.XTSE",
+    company: "CGI Inc.",
+    market: "Канада",
+    sector: "ИТ-консалтинг и услуги",
+    rating: "Покупать",
+    target: "C$124,14",
+    updated: "23.07.2026",
+    commentDate: "23.07.2026",
+    currencyCode: "CAD",
+    analyst: "Дмитрий Лозовой",
+    isin: "CA12532H1047",
+    assetClass: "Акции",
+    companyCountry: "Канада",
+    exchangeCountry: "Канада",
+    status: "active",
+    summary: "Одна из наиболее интересных бумаг канадского технологического сектора: устойчивые финансовые показатели, высокая маржинальность, значительный портфель долгосрочных заказов и стабильный денежный поток.",
+    research: { date: "23.07.2026", title: "Отставание от индекса как инвестидея", url: `${finam}/cgi--otstavanie-ot-indeksa-kak-investideya-20260723-1630/` },
+    note: { date: "23.07.2026", title: "Отставание от индекса как инвестидея", url: `${finam}/cgi--otstavanie-ot-indeksa-kak-investideya-20260723-1630/` },
+  },
   {
     ticker: "3033",
     company: "CSOP Hang Seng TECH ETF",
