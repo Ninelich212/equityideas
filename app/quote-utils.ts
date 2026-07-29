@@ -43,7 +43,7 @@ export function upsideClass(value: number | null) {
 export function formatQuote(item: CoverageItem, quote?: Quote) {
   if (!quote) return "—";
   const formatted = quote.price.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const prefix: Record<string, string> = { RUB: "₽", USD: "$", JPY: "¥", HKD: "HK$", CNY: "CNY " };
+  const prefix: Record<string, string> = { RUB: "₽", USD: "$", CAD: "C$", JPY: "¥", HKD: "HK$", CNY: "CNY " };
   return `${prefix[item.currencyCode ?? ""] ?? ""}${formatted}`;
 }
 
