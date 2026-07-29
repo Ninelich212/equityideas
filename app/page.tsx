@@ -8,6 +8,7 @@ const markets: Array<"Все" | Market> = [
   "Все",
   "Россия",
   "США",
+  "Канада",
   "Япония",
   "Китай",
   "Гонконг",
@@ -17,10 +18,11 @@ const markets: Array<"Все" | Market> = [
 const coverageMarketOrder: Record<Market, number> = {
   Россия: 0,
   США: 1,
-  Криптовалюты: 2,
-  Япония: 3,
-  Гонконг: 4,
-  Китай: 5,
+  Канада: 2,
+  Криптовалюты: 3,
+  Япония: 4,
+  Гонконг: 5,
+  Китай: 6,
 };
 
 export default function Home() {
