@@ -17,6 +17,7 @@ const yahooSymbols = {
   CRM: "CRM",
   "BITQ.K": "BITQ",
   "NTES.O": "NTES",
+  "GIB.A.XTSE": "GIB-A.TO",
   "WCLD.O": "WCLD",
   "002517.SZ": "002517.SZ",
   "600570.SS": "600570.SS",
