@@ -1,4 +1,4 @@
-// Quote updater: manual refresh trigger 2026-07-29.
+// Quote updater: manual refresh trigger 2026-08-12.
 import { readFile, writeFile } from "node:fs/promises";
 
 const quotesPath = new URL("../app/quotes.generated.json", import.meta.url);
