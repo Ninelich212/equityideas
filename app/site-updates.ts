@@ -1,6 +1,6 @@
 import {
-  coverage as baseCoverage,
-  research as baseResearch,
+  coverage,
+  research,
   type CoverageItem,
 } from "./data";
 
@@ -60,12 +60,11 @@ function dateValue(value: string) {
   return Date.UTC(year, month - 1, day);
 }
 
-export const coverage: CoverageItem[] = baseCoverage
-  .map((item) => ({
-    ...item,
-    ...coverageUpdates[item.ticker],
-  }))
-  .sort((a, b) => dateValue(b.updated) - dateValue(a.updated));
+for (const item of coverage) {
+  const update = coverageUpdates[item.ticker];
+  if (update) Object.assign(item, update);
+}
+coverage.sort((a, b) => dateValue(b.updated) - dateValue(a.updated));
 
 const latestResearch = [
   {
@@ -111,8 +110,9 @@ const latestResearch = [
 ];
 
 const latestUrls = new Set(latestResearch.map((item) => item.url));
-
-export const research = [
+const mergedResearch = [
   ...latestResearch,
-  ...baseResearch.filter((item) => !latestUrls.has(item.url)),
+  ...research.filter((item) => !latestUrls.has(item.url)),
 ].sort((a, b) => dateValue(b.date) - dateValue(a.date));
+
+research.splice(0, research.length, ...mergedResearch);
