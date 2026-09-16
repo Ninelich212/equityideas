@@ -13,6 +13,7 @@ const yahooSymbols = {
   "CIBR.O": "CIBR",
   "GOOGL.O": "GOOGL",
   "MSFT.O": "MSFT",
+  "PANW.O": "PANW",
   "KOMP.K": "KOMP",
   CRM: "CRM",
   "BITQ.K": "BITQ",
