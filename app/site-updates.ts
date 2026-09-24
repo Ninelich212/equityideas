@@ -190,6 +190,25 @@ const coverageUpdates: Record<string, Partial<CoverageItem>> = {
       url: `${finam}/sony--vosstanovlenie-aktsiy-na-fone-zhestkoy-dkp-20260904-1331/`,
     },
   },
+  "7974.T": {
+    rating: "Покупать",
+    target: "¥10 387,47",
+    status: "active",
+    updated: "23.09.2026",
+    commentDate: "23.09.2026",
+    summary:
+      "Switch 2 формирует новый цикл роста Nintendo: продажи новой консоли и цифрового контента поддерживают прибыль, а сильный каталог собственных франшиз создает базу для дальнейшего расширения экосистемы.",
+    research: {
+      date: "23.09.2026",
+      title: "Nintendo — новый цикл роста на базе Switch 2",
+      url: `${finam}/nintendo--novyy-tsikl-rosta-na-baze-switch-2-20260923-1639/`,
+    },
+    note: {
+      date: "23.09.2026",
+      title: "Nintendo — новый цикл роста на базе Switch 2",
+      url: `${finam}/nintendo--novyy-tsikl-rosta-na-baze-switch-2-20260923-1639/`,
+    },
+  },
   "MSFT.O": {
     rating: "Покупать",
     target: "$579,20",
@@ -198,10 +217,15 @@ const coverageUpdates: Record<string, Partial<CoverageItem>> = {
     commentDate: "15.09.2026",
     summary:
       "Microsoft остается одним из главных бенефициаров ИИ-революции: Azure растет двузначными темпами, а компания монетизирует ИИ через инфраструктуру, Copilot и партнерства с ведущими разработчиками моделей.",
+    research: {
+      date: "16.09.2026",
+      title: "Microsoft — главный бенефициар ИИ-революции",
+      url: `${finam}/microsoft--glavnyy-benefitsiar-ii-revolyutsii-20260916-1242/`,
+    },
     note: {
-      date: "08.09.2026",
-      title: "Инвестидея по акциям Microsoft реализовала свой потенциал",
-      url: `${finam}/invest-ideya-po-aktsiyam-microsoft-realizovala-svoy-potentsial-20260908-1812/`,
+      date: "16.09.2026",
+      title: "Microsoft — главный бенефициар ИИ-революции",
+      url: `${finam}/microsoft--glavnyy-benefitsiar-ii-revolyutsii-20260916-1242/`,
     },
   },
   "7211.T": {
@@ -250,10 +274,10 @@ const paloAlto: CoverageItem = {
   company: "Palo Alto Networks",
   market: "США",
   sector: "Кибербезопасность",
-  rating: "Держать",
+  rating: "Продавать",
   target: "$330,10",
-  updated: "08.09.2026",
-  commentDate: "08.09.2026",
+  updated: "24.09.2026",
+  commentDate: "24.09.2026",
   currencyCode: "USD",
   analyst: "Дмитрий Лозовой",
   isin: "US6974351057",
@@ -262,7 +286,7 @@ const paloAlto: CoverageItem = {
   exchangeCountry: "США",
   status: "active",
   summary:
-    "Один из мировых лидеров кибербезопасности с быстрорастущей платформой и сильным денежным потоком. Качество бизнеса высокое, но значительная часть ожидаемого роста уже отражена в оценке.",
+    "Сильный бизнес остается одним из лидеров рынка кибербезопасности, однако после резкого роста котировки заметно превысили нашу фундаментальную оценку. Целевая цена сохранена на уровне $330,10, рейтинг понижен до «Продавать».",
   research: {
     date: "08.09.2026",
     title: "Palo Alto — высокая оценка полностью справедлива",
@@ -293,12 +317,28 @@ coverage.sort((a, b) => dateValue(b.updated) - dateValue(a.updated));
 
 const latestResearch = [
   {
-    date: "15.09.2026",
+    date: "24.09.2026",
+    label: "Ресерч",
+    title: "Palo Alto Networks — сильный бизнес по высокой цене",
+    summary:
+      "Целевая цена сохранена на уровне $330,10, однако после сильного роста котировок рейтинг снижен с «Держать» до «Продавать».",
+    url: "",
+  },
+  {
+    date: "23.09.2026",
+    label: "Ресерч",
+    title: "Nintendo — новый цикл роста на базе Switch 2",
+    summary:
+      "Switch 2 формирует новый цикл роста компании; целевая цена обновлена до ¥10 387,47 при сохранении рейтинга «Покупать».",
+    url: `${finam}/nintendo--novyy-tsikl-rosta-na-baze-switch-2-20260923-1639/`,
+  },
+  {
+    date: "16.09.2026",
     label: "Ресерч",
     title: "Microsoft — главный бенефициар ИИ-революции",
     summary:
       "Новая оценка Microsoft с целевой ценой $579,20: Azure, Copilot и участие в ведущих ИИ-экосистемах формируют долгосрочный драйвер роста.",
-    url: "",
+    url: `${finam}/microsoft--glavnyy-benefitsiar-ii-revolyutsii-20260916-1242/`,
   },
   {
     date: "11.09.2026",
