@@ -89,7 +89,7 @@ export default function Home() {
             <a className="primary-button" href="#ideas">
               Открыть идеи <span>↓</span>
             </a>
-            <span className="as-of">Срез данных: июль 2026</span>
+            <span className="as-of">Срез данных: 24 сентября 2026</span>
           </div>
         </div>
 
