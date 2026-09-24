@@ -7,8 +7,8 @@ import generatedQuotes from "./quotes.generated.json";
 export type Quote = { price: number; date: string | null };
 export type QuoteMap = Record<string, Quote>;
 
-// Файл обновляется ежедневно через GitHub Actions.
-// Японские бумаги остаются ручными и сохраняются при каждом обновлении.
+// Котировки обновляются автоматически через GitHub Actions и по расписанию.
+// Японские бумаги сохраняются при каждом обновлении.
 export const manualQuotes: QuoteMap = generatedQuotes satisfies QuoteMap;
 
 export function useQuotes() {
