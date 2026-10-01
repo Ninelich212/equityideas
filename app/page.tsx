@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { coverage, research, type Market } from "./data";
+import { coverage, getPublicationStatsByQuarter, research, type Market } from "./data";
 import { displayTicker, formatQuote, formatQuoteDate, formatUpside, upsideClass, upsideFromQuote, useQuotes } from "./quote-utils";
 
 const markets: Array<"Все" | Market> = [
@@ -30,6 +30,7 @@ export default function Home() {
   const [market, setMarket] = useState<(typeof markets)[number]>("Все");
   const [coverageMode, setCoverageMode] = useState<"current" | "all">("current");
   const { quotes, loading: quotesLoading } = useQuotes();
+  const publicationStats = getPublicationStatsByQuarter();
 
   const visibleCoverage = useMemo(
     () => coverage
@@ -261,14 +262,17 @@ export default function Home() {
         </footer>
       </section>
 
-      <div
-        hidden
-        aria-hidden="true"
-        data-material-counter="2026-Q3"
-        data-briefs="15"
-        data-research="10"
-        data-total="25"
-      />
+      <div hidden aria-hidden="true" data-material-counters>
+        {publicationStats.map((stats) => (
+          <span
+            key={stats.quarter}
+            data-quarter={stats.quarter}
+            data-briefs={stats.briefs}
+            data-research={stats.research}
+            data-total={stats.total}
+          />
+        ))}
+      </div>
     </main>
   );
 }
