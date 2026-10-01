@@ -1,5 +1,64 @@
 export type Market = "Россия" | "США" | "Канада" | "Япония" | "Китай" | "Гонконг" | "Криптовалюты";
 
+export type PublicationKind = "brief" | "research" | "comment";
+
+export type PublicationEntry = {
+  date: string;
+  kind: PublicationKind;
+  title: string;
+};
+
+// Единый реестр материалов. Счетчики по кварталам строятся из него автоматически:
+// при добавлении нового материала достаточно указать дату и тип.
+export const publications: PublicationEntry[] = [
+  { date: "02.07.2026", kind: "brief", title: "Яндекс — всё лучше фундаментально" },
+  { date: "07.07.2026", kind: "research", title: "CSOP Hang Seng TECH Index ETF — отставание как возможность" },
+  { date: "10.07.2026", kind: "brief", title: "МТС — дивидендный гэп как точка входа" },
+  { date: "14.07.2026", kind: "research", title: "NetEase — китайский геймдев всё лучше и лучше" },
+  { date: "23.07.2026", kind: "brief", title: "Alphabet — в погоне за окупаемостью CAPEX" },
+  { date: "23.07.2026", kind: "research", title: "CGI — отставание от индекса как инвестидея" },
+  { date: "31.07.2026", kind: "brief", title: "Microsoft — сильная отчетность и сохранение целевой цены" },
+
+  { date: "20.08.2026", kind: "brief", title: "Циан — уникальная компания на фондовом рынке России" },
+  { date: "24.08.2026", kind: "brief", title: "HeadHunter — 2026 год может стать локальным дном" },
+  { date: "24.08.2026", kind: "research", title: "Яндекс — экосистемный гигант на все случаи жизни" },
+  { date: "25.08.2026", kind: "brief", title: "Ростелеком — устойчивые результаты при исторически низкой оценке" },
+  { date: "26.08.2026", kind: "brief", title: "МТС — компания ускоряет качественный рост" },
+  { date: "28.08.2026", kind: "brief", title: "Salesforce — акции наконец начали догонять широкий IT-рынок" },
+  { date: "28.08.2026", kind: "brief", title: "NetEase — игровой бизнес продолжает расти" },
+
+  { date: "01.09.2026", kind: "research", title: "АФК Система — геополитический риск ударил по оценке активов" },
+  { date: "02.09.2026", kind: "brief", title: "WCLD — идея реализована, интерес снижается" },
+  { date: "04.09.2026", kind: "research", title: "Sony — восстановление акций на фоне жесткой ДКП" },
+  { date: "08.09.2026", kind: "brief", title: "Microsoft — инвестидея реализовала свой потенциал" },
+  { date: "09.09.2026", kind: "research", title: "Palo Alto — высокая оценка полностью справедлива" },
+  { date: "09.09.2026", kind: "brief", title: "Mitsubishi Motors — концентрация на флагманах" },
+  { date: "12.09.2026", kind: "brief", title: "Oracle — недооцененные бумаги на фоне хорошего отчета" },
+  { date: "16.09.2026", kind: "research", title: "Microsoft — главный бенефициар ИИ-революции" },
+  { date: "23.09.2026", kind: "research", title: "Nintendo — новый цикл роста на базе Switch 2" },
+  { date: "24.09.2026", kind: "brief", title: "Palo Alto Networks — сильный бизнес по высокой цене" },
+  { date: "30.09.2026", kind: "research", title: "Hundsun — перестройка бизнеса на фоне перепроданности акций" },
+];
+
+export function getPublicationStatsByQuarter() {
+  const grouped = new Map<string, { quarter: string; briefs: number; research: number; total: number }>();
+
+  for (const item of publications) {
+    if (item.kind === "comment") continue;
+
+    const [, month, year] = item.date.split(".").map(Number);
+    const quarter = `${year}-Q${Math.floor((month - 1) / 3) + 1}`;
+    const stats = grouped.get(quarter) ?? { quarter, briefs: 0, research: 0, total: 0 };
+
+    if (item.kind === "brief") stats.briefs += 1;
+    if (item.kind === "research") stats.research += 1;
+    stats.total += 1;
+    grouped.set(quarter, stats);
+  }
+
+  return Array.from(grouped.values()).sort((a, b) => a.quarter.localeCompare(b.quarter));
+}
+
 export type Idea = {
   ticker: string;
   company: string;
