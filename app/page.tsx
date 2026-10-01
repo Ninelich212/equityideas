@@ -31,6 +31,15 @@ export default function Home() {
   const [coverageMode, setCoverageMode] = useState<"current" | "all">("current");
   const { quotes, loading: quotesLoading } = useQuotes();
   const publicationStats = getPublicationStatsByQuarter();
+  const now = new Date();
+  const currentQuarter = `${now.getFullYear()}-Q${Math.floor(now.getMonth() / 3) + 1}`;
+  const currentQuarterStats =
+    publicationStats.find((stats) => stats.quarter === currentQuarter) ?? {
+      quarter: currentQuarter,
+      briefs: 0,
+      research: 0,
+      total: 0,
+    };
 
   const visibleCoverage = useMemo(
     () => coverage
@@ -262,17 +271,15 @@ export default function Home() {
         </footer>
       </section>
 
-      <div hidden aria-hidden="true" data-material-counters>
-        {publicationStats.map((stats) => (
-          <span
-            key={stats.quarter}
-            data-quarter={stats.quarter}
-            data-briefs={stats.briefs}
-            data-research={stats.research}
-            data-total={stats.total}
-          />
-        ))}
-      </div>
+      <div
+        hidden
+        aria-hidden="true"
+        data-material-counter="current-quarter"
+        data-quarter={currentQuarterStats.quarter}
+        data-briefs={currentQuarterStats.briefs}
+        data-research={currentQuarterStats.research}
+        data-total={currentQuarterStats.total}
+      />
     </main>
   );
 }
