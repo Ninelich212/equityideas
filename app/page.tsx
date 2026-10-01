@@ -260,6 +260,15 @@ export default function Home() {
           <a href="#top">Наверх ↑</a>
         </footer>
       </section>
+
+      <div
+        hidden
+        aria-hidden="true"
+        data-material-counter="2026-Q3"
+        data-briefs="15"
+        data-research="10"
+        data-total="25"
+      />
     </main>
   );
 }
