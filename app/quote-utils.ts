@@ -1,6 +1,7 @@
 "use client";
 
 import "./site-updates";
+import "./october-updates";
 import type { CoverageItem } from "./data";
 import generatedQuotes from "./quotes.generated.json";
 
